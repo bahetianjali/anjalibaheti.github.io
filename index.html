@@ -5,45 +5,60 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>America's Biggest Itches Nobody Is Scratching</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --text: #1a1a1a;
+    --text: #1a1a16;
     --text-muted: #6b6b6b;
-    --text-light: #999;
-    --border: #e8e8e8;
-    --bg-soft: #f7f7f5;
+    --text-light: #9a9a96;
+    --border: #e8e4dc;
+    --bg-soft: #f8f7f3;
     --bg-card: #fff;
-    --red: #c0392b;
-    --blue: #2471a3;
-    --green: #1e8449;
-    --amber: #d68910;
-    --purple: #7d3c98;
+    --red: #d63031;
+    --violet: #6B47E0;
+    --violet-deep: #4C31B0;
+    --violet-light: #EDE8FD;
+    --amber: #F4B840;
+    --amber-dark: #A87C0A;
+    --amber-light: #FDF6E3;
   }
+
+  ::selection { background: var(--violet); color: #fff; }
 
   body {
     font-family: 'Lora', Georgia, serif;
     font-size: 20px;
     line-height: 1.78;
     color: var(--text);
-    background: #fff;
+    background: #FDFCF9;
     max-width: 740px;
     margin: 0 auto;
-    padding: 60px 24px 120px;
+    padding: 72px 24px 120px;
+    position: relative;
+  }
+
+  /* violet-to-amber gradient top bar */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--violet) 0%, var(--amber) 100%);
+    z-index: 99;
   }
 
   .pub-meta {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--text-muted);
     letter-spacing: 0.04em;
     text-transform: uppercase;
     margin-bottom: 32px;
   }
-  .pub-meta strong { color: var(--text); font-weight: 600; }
+  .pub-meta strong { color: var(--violet); font-weight: 600; }
 
   h1 {
     font-family: 'Lora', serif;
@@ -70,12 +85,12 @@
     align-items: center;
     gap: 12px;
     margin-bottom: 48px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
   .avatar {
     width: 48px; height: 48px;
     border-radius: 50%;
-    background: #1a1a1a;
+    background: var(--violet);
     display: flex; align-items: center; justify-content: center;
     font-size: 18px; font-weight: 600; color: #fff;
     flex-shrink: 0;
@@ -90,22 +105,37 @@
     font-family: 'Lora', serif;
     font-size: 28px;
     font-weight: 600;
+    color: var(--violet);
     margin: 52px 0 20px;
     line-height: 1.3;
   }
 
   strong { font-weight: 600; }
   em { font-style: italic; }
-  a { color: var(--text); }
+  a { color: var(--violet); text-underline-offset: 3px; }
+  a:hover { color: var(--violet-deep); }
 
   blockquote {
-    border-left: 3px solid var(--text);
+    border-left: 3px solid var(--amber);
     padding-left: 24px;
     margin: 36px 0;
     font-style: italic;
     font-size: 22px;
     color: var(--text);
     line-height: 1.55;
+    position: relative;
+  }
+  blockquote::before {
+    content: '\201C';
+    position: absolute;
+    top: -16px;
+    left: 14px;
+    font-size: 80px;
+    font-family: 'Lora', Georgia, serif;
+    color: var(--amber);
+    opacity: 0.28;
+    line-height: 1;
+    pointer-events: none;
   }
 
   hr {
@@ -117,34 +147,34 @@
   .visual-block {
     margin: 44px -24px;
     background: var(--bg-soft);
-    border-top: 1px solid var(--border);
+    border-top: 2px solid var(--violet);
     border-bottom: 1px solid var(--border);
     padding: 32px 28px;
   }
   .visual-title {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--violet);
     margin-bottom: 6px;
   }
   .visual-headline {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 20px;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 4px;
   }
   .visual-sub {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--text-muted);
     margin-bottom: 20px;
   }
   .visual-source {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     color: var(--text-light);
     margin-top: 14px;
@@ -163,47 +193,47 @@
     padding: 14px 16px;
   }
   .stat-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     color: var(--text-muted);
     margin-bottom: 4px;
     line-height: 1.3;
   }
   .stat-num {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 26px;
     font-weight: 600;
-    color: var(--text);
+    color: var(--violet);
     line-height: 1;
     margin-bottom: 4px;
   }
   .stat-note {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     line-height: 1.3;
   }
   .red { color: var(--red); }
-  .amber { color: var(--amber); }
+  .amber { color: var(--amber-dark); }
 
   .news-callout {
     background: #fff;
     border: 1px solid var(--border);
-    border-left: 3px solid var(--red);
+    border-left: 3px solid var(--violet);
     border-radius: 0 8px 8px 0;
     padding: 16px 18px;
     margin-bottom: 12px;
   }
   .news-source {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--violet);
     margin-bottom: 4px;
   }
   .news-headline {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: var(--text);
@@ -211,7 +241,7 @@
     margin-bottom: 4px;
   }
   .news-detail {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     color: var(--text-muted);
     line-height: 1.5;
@@ -227,7 +257,7 @@
     display: flex;
     gap: 18px;
     margin-bottom: 12px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     color: var(--text-muted);
   }
@@ -251,9 +281,9 @@
     padding: 10px 12px;
   }
   .phase-card.danger { border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; }
-  .phase-card.success { border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; }
+  .phase-card.success { border-left: 3px solid var(--violet); border-radius: 0 8px 8px 0; }
   .phase-label {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -262,28 +292,28 @@
     margin-bottom: 2px;
   }
   .phase-label.r { color: var(--red); }
-  .phase-label.g { color: var(--green); }
+  .phase-label.g { color: var(--violet); }
   .phase-name {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 3px;
   }
   .phase-desc {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 11px;
     color: var(--text-muted);
     line-height: 1.4;
   }
 
   .formula-box {
-    background: var(--text);
+    background: var(--violet);
     color: #fff;
     border-radius: 10px;
     padding: 20px 24px;
     margin-bottom: 16px;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
   .formula-eq {
     font-size: 20px;
@@ -301,12 +331,12 @@
     margin-top: 14px;
   }
   .formula-pill {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
     border-radius: 20px;
     padding: 4px 12px;
     font-size: 12px;
-    color: rgba(255,255,255,0.85);
+    color: rgba(255,255,255,0.88);
   }
 
   .gaps-grid {
@@ -328,13 +358,13 @@
   .blk-card.open  { background: #111; }
   .blk-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
   .blk-left { flex: 1; min-width: 0; }
-  .blk-num  { font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.3); margin-bottom:5px; letter-spacing:0.06em; }
-  .blk-title { font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:600; color:rgba(255,255,255,0.92); line-height:1.35; margin-bottom:8px; }
+  .blk-num  { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:600; color:rgba(255,255,255,0.3); margin-bottom:5px; letter-spacing:0.06em; }
+  .blk-title { font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:rgba(255,255,255,0.92); line-height:1.35; margin-bottom:8px; }
   .blk-badges { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-  .blk-ind { font-family:'Source Sans 3',sans-serif; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; letter-spacing:0.03em; }
-  .blk-sc  { font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:500; color:rgba(255,255,255,0.4); }
+  .blk-ind { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:600; padding:2px 8px; border-radius:20px; letter-spacing:0.03em; }
+  .blk-sc  { font-family:'DM Sans',sans-serif; font-size:11px; font-weight:500; color:rgba(255,255,255,0.4); }
   .blk-right { display:flex; flex-direction:column; align-items:flex-end; gap:5px; flex-shrink:0; }
-  .blk-big  { font-family:'Source Sans 3',sans-serif; font-size:26px; font-weight:600; line-height:1; color:#fff; }
+  .blk-big  { font-family:'DM Sans',sans-serif; font-size:26px; font-weight:600; line-height:1; color:#fff; }
   .blk-big span { font-size:13px; font-weight:400; color:rgba(255,255,255,0.3); }
   .blk-chev { font-size:14px; color:rgba(255,255,255,0.3); transition:transform 0.2s; }
   .blk-card.open .blk-chev { transform:rotate(180deg); }
@@ -343,72 +373,53 @@
   .blk-expand { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
   .blk-card.open .blk-expand { max-height:500px; }
   .blk-inner { border-top:0.5px solid rgba(255,255,255,0.1); margin-top:14px; padding-top:14px; }
-  .blk-desc { font-family:'Source Sans 3',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); line-height:1.65; margin-bottom:14px; }
+  .blk-desc { font-family:'DM Sans',sans-serif; font-size:13px; color:rgba(255,255,255,0.6); line-height:1.65; margin-bottom:14px; }
   .blk-scores { display:flex; gap:14px; margin-bottom:10px; }
   .blk-si { flex:1; }
-  .blk-sl { font-family:'Source Sans 3',sans-serif; font-size:10px; color:rgba(255,255,255,0.3); margin-bottom:3px; letter-spacing:0.04em; }
-  .blk-sv { font-family:'Source Sans 3',sans-serif; font-size:18px; font-weight:600; color:rgba(255,255,255,0.85); }
+  .blk-sl { font-family:'DM Sans',sans-serif; font-size:10px; color:rgba(255,255,255,0.3); margin-bottom:3px; letter-spacing:0.04em; }
+  .blk-sv { font-family:'DM Sans',sans-serif; font-size:18px; font-weight:600; color:rgba(255,255,255,0.85); }
   .blk-mb { height:2px; background:rgba(255,255,255,0.08); border-radius:1px; margin-top:4px; overflow:hidden; }
   .blk-mf { height:100%; border-radius:1px; }
-  .blk-sig { font-family:'Source Sans 3',sans-serif; font-size:12px; color:rgba(100,200,140,0.9); border-top:0.5px solid rgba(255,255,255,0.08); padding-top:10px; display:flex; gap:6px; line-height:1.5; }
-
-  .pattern-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 24px 0;
-  }
-  .pattern-card {
-    background: var(--bg-soft);
-    border-radius: 8px;
-    padding: 14px 16px;
-  }
-  .pattern-card-title {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .pattern-card-body {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
+  .blk-sig { font-family:'DM Sans',sans-serif; font-size:12px; color:#F4B840; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:10px; display:flex; gap:6px; line-height:1.5; }
 
   .cta-block {
-    background: var(--text);
+    background: var(--violet);
     color: #fff;
     border-radius: 12px;
     padding: 32px 28px;
     margin: 48px 0 0;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
   .cta-block h3 {
     font-size: 22px;
     font-weight: 600;
     color: #fff;
     margin: 0 0 10px;
+    font-family: 'DM Sans', sans-serif;
   }
   .cta-block p {
     font-size: 15px;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.75);
     margin-bottom: 20px;
     line-height: 1.6;
   }
   .cta-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.24);
     border-radius: 20px;
     padding: 8px 18px;
     font-size: 14px;
     color: #fff;
     text-decoration: none;
-    transition: background 0.15s;
+    transition: background 0.15s, border-color 0.15s;
+    font-family: 'DM Sans', sans-serif;
   }
-  .cta-tag:hover { background: rgba(255,255,255,0.2); }
+  .cta-tag:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: #1a1a16;
+  }
 
   .tags-row {
     display: flex;
@@ -419,13 +430,20 @@
     border-top: 1px solid var(--border);
   }
   .tag {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     background: var(--bg-soft);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 4px 12px;
     color: var(--text-muted);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    cursor: default;
+  }
+  .tag:hover {
+    background: var(--violet-light);
+    border-color: var(--violet);
+    color: var(--violet-deep);
   }
 </style>
 </head>
@@ -462,7 +480,6 @@
   <div class="visual-title">Breaking — May 2026</div>
   <div class="visual-headline">The numbers that made me stop</div>
   <div class="visual-sub">When even Microsoft can't afford its own AI tools, something is broken</div>
-
   <div class="stat-grid">
     <div class="stat-card">
       <div class="stat-label">Uber's 2026 AI budget</div>
@@ -485,7 +502,6 @@
       <div class="stat-note red">~100 companies</div>
     </div>
   </div>
-
   <div style="margin-top:14px;">
     <div class="news-callout">
       <div class="news-source">Fortune · TheStreet · TechRadar — May 2026</div>
@@ -520,16 +536,13 @@
   <div class="visual-title">Framework</div>
   <div class="visual-headline">The J-Curve: Where Startups Go to Die</div>
   <div class="visual-sub">Value vs. time — the valley between early excitement and sustainable scale</div>
-
   <div class="chart-legend">
-    <span><span class="legend-dot" style="background:#2471a3;"></span>Momentum / perceived value</span>
-    <span><span class="legend-dot" style="background:#c0392b; opacity:0.7;"></span>Operational cost</span>
+    <span><span class="legend-dot" style="background:#6B47E0;"></span>Momentum / perceived value</span>
+    <span><span class="legend-dot" style="background:#d63031; opacity:0.7;"></span>Operational cost</span>
   </div>
-
   <div class="chart-wrap">
     <canvas id="jcurve" role="img" aria-label="J-Curve chart showing startup value dipping into the valley of death before recovering to sustainable scale">J-Curve: value dips into the valley of death around months 6-8, then recovers.</canvas>
   </div>
-
   <div class="phase-grid">
     <div class="phase-card">
       <div class="phase-label">Phase 1</div>
@@ -567,9 +580,7 @@
   That's when I came across a framework called <strong>Fix My Itch</strong> — something Razorpay built brilliantly for India. They scraped Reddit, X, and forums for real problems, then scored each one on severity, frequency, and market size. The "Itch Score." It's such a clean idea, and as far as I can tell, nobody has applied it to the US market yet.
 </p>
 
-<p>
-  So I borrowed it. Three inputs, simple math:
-</p>
+<p>So I borrowed it. Three inputs, simple math:</p>
 
 <div class="visual-block">
   <div class="formula-box">
@@ -581,7 +592,7 @@
       <span class="formula-pill">Whitespace (1–10): How weak are existing solutions?</span>
     </div>
   </div>
-  <p style="font-family:'Source Sans 3',sans-serif; font-size:13px; color:var(--text-muted); margin-bottom:0;">
+  <p style="font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text-muted); margin-bottom:0;">
     Frequency comes from Reddit threads, Hacker News, G2 reviews, LinkedIn — wherever people actually vent. Whitespace asks: even if a solution technically exists, does it leave most of the friction in place?
   </p>
 </div>
@@ -655,7 +666,6 @@
   const labels = ['Launch','Mo 2','Mo 4','Mo 6','Mo 8','Mo 10','Mo 12','Mo 18','Mo 24'];
   const value  = [60, 75, 55, 30, 15, 25, 45, 80, 120];
   const cost   = [10, 20, 40, 65, 72, 68, 60, 55, 50];
-
   new Chart(ctx, {
     type: 'line',
     data: {
@@ -664,26 +674,26 @@
         {
           label: 'Momentum / value',
           data: value,
-          borderColor: '#2471a3',
+          borderColor: '#6B47E0',
           borderWidth: 2.5,
-          backgroundColor: 'rgba(36,113,163,0.08)',
+          backgroundColor: 'rgba(107,71,224,0.08)',
           fill: true,
           tension: 0.45,
           pointRadius: value.map((v,i) => (i===3||i===4) ? 7 : 4),
-          pointBackgroundColor: value.map((v,i) => (i===3||i===4) ? '#c0392b' : '#2471a3'),
+          pointBackgroundColor: value.map((v,i) => (i===3||i===4) ? '#d63031' : '#6B47E0'),
           pointBorderColor: 'transparent',
         },
         {
           label: 'Operational cost',
           data: cost,
-          borderColor: '#c0392b',
+          borderColor: '#d63031',
           borderWidth: 2,
           borderDash: [5, 4],
-          backgroundColor: 'rgba(192,57,43,0.06)',
+          backgroundColor: 'rgba(214,48,49,0.06)',
           fill: true,
           tension: 0.4,
           pointRadius: 3,
-          pointBackgroundColor: '#c0392b',
+          pointBackgroundColor: '#d63031',
           pointBorderColor: 'transparent',
         }
       ]
@@ -699,7 +709,7 @@
       scales: {
         x: {
           grid: { color: 'rgba(0,0,0,0.05)' },
-          ticks: { font: { size: 11, family: "'Source Sans 3',sans-serif" }, color: '#999', maxRotation: 30 }
+          ticks: { font: { size: 11, family: "'DM Sans',sans-serif" }, color: '#999', maxRotation: 30 }
         },
         y: { display: false, min: 0, max: 140 }
       }
@@ -715,7 +725,7 @@
     {num:'04',title:'SMB workflow fragmentation',industry:'SMB',ic:'#378ADD',ib:'rgba(55,138,221,0.18)',score:24,tam:7,freq:9,ws:8,desc:'At a 50-person company, Marketing, Sales, and Finance each have their own version of "what\'s our revenue?" Half of every leadership meeting is spent arguing about whose number is right. The enterprise answer is a data warehouse plus a BI team. Most SMBs can\'t afford either. The middle option just doesn\'t exist.',signal:null},
     {num:'05',title:'Employer immigration compliance',industry:'Legaltech',ic:'#EF9F27',ib:'rgba(239,159,39,0.18)',score:24,tam:7,freq:9,ws:8,desc:'The H-1B fee just jumped to $100,000. ICE enforcement is unpredictable. Immigration attorneys are taking near-daily panic calls from employers who don\'t know if they\'re still compliant. Most mid-size companies handle this through spreadsheets and expensive outside counsel.',signal:'Casium raised $5M in October 2025 to automate employer immigration cases. Early market, but it\'s clearly real.'}
   ];
-  const bc=s=>s>=26?'#E24B4A':s>=23?'#EF9F27':'#378ADD';
+  const bc=s=>s>=26?'#F4B840':s>=23?'#6B47E0':'#5B8DB8';
   const grid=document.getElementById('blk-grid');
   gaps.forEach(g=>{
     const pct=Math.round((g.score/30)*100);
@@ -755,6 +765,5 @@
   });
 })();
 </script>
-
 </body>
 </html>
